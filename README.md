@@ -12,7 +12,7 @@ The pipeline reads a short spec per video (scenes, narration, on-screen text, ch
 
 ## Result
 
-Measured on the original project: **21 videos rendered in 33 minutes on one workstation, with no cloud APIs.** Each video came out in two sizes from one spec, with narration, music, captions and a poster frame.
+Measured on the original project: **21 videos rendered in 33 minutes on one workstation, with no cloud APIs.** Each video came out in two sizes from one spec, with narration, music and a poster frame.
 
 Measured on this template, on one workstation with 28 logical cores (Windows + WSL):
 
@@ -106,6 +106,10 @@ node engine/config.mjs
 Each render uses a fresh, throwaway Chrome profile under the git-ignored `work/` folder and deletes it afterwards.
 
 ## Quick start
+
+```bash
+git clone https://github.com/TacitDev1/offline-video-pipeline && cd offline-video-pipeline
+```
 
 ```bash
 node engine/revoice.mjs videos/copilot-teaser
