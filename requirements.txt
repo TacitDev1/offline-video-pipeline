@@ -1,0 +1,6 @@
+# Stage 01 (voice), installed into the Kokoro venv: python3 -m venv ~/kokoro/.venv && ~/kokoro/.venv/bin/pip install -r requirements.txt
+# Versions the sample was rendered with; newer ones should work.
+kokoro-onnx==0.6.1
+soundfile==0.14.0
+numpy==2.5.4
+onnxruntime==1.31.1

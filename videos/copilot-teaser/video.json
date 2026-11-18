@@ -1,0 +1,49 @@
+{
+  "id": "copilot-teaser",
+  "title": "Larkwell Copilot: what failed overnight?",
+  "about": "A ~20-second teaser. Invented product, company, systems and data (see README).",
+  "voice": { "speed": 0.9 },
+  "scenes": [
+    {
+      "id": "s1",
+      "type": "open",
+      "vo": "It's month-end, and the interface queue is red."
+    },
+    {
+      "id": "s2",
+      "type": "chat",
+      "eyebrow": "LARKWELL COPILOT",
+      "session": "Overnight failures",
+      "clock": "07:48:10",
+      "intro": false,
+      "cap": "Ask in plain language.",
+      "sub": "It reads the logs and shows its sources.",
+      "blocks": [
+        { "type": "user", "text": "Which inbound invoices failed in BP1 overnight, and why?" },
+        {
+          "type": "ai",
+          "chips": ["diagnose", "◈ analysis"],
+          "tools": "list_interfaces, read_log",
+          "lead": "Three inbound invoices failed after 02:00. All three name the same vendor, which does not exist in `BP1` yet.",
+          "cols": ["Message", "Partner", "Failed at", "Status", "Cause"],
+          "mono": [0],
+          "num": [2],
+          "rows": [
+            ["0000481207", "Hollin Freight", "02:14", "Error", "Vendor 400118 unknown"],
+            ["0000481213", "Hollin Freight", "02:15", "Error", "Vendor 400118 unknown"],
+            ["0000481260", "Hollin Freight", "03:02", "Error", "Vendor 400118 unknown"]
+          ]
+        }
+      ],
+      "vo": "Ask Larkwell Copilot what failed. It reads the logs, finds the common cause, and shows where every line came from."
+    },
+    {
+      "id": "s3",
+      "type": "end",
+      "quick": true,
+      "h1": "Answers from your own systems.",
+      "sub": "Larkwell Copilot",
+      "vo": "Larkwell Copilot. Answers from your own systems."
+    }
+  ]
+}

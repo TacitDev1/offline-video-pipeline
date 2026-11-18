@@ -1,0 +1,9 @@
+{
+  "_about": "Copy to pipeline.config.json (git-ignored) only if auto-detection gets something wrong. Every key is optional; an environment variable of the same meaning wins (see engine/config.mjs). Check what was resolved with: node engine/config.mjs",
+  "chrome": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "shell": "wsl",
+  "kokoroDir": "~/kokoro",
+  "ffmpeg": "ffmpeg",
+  "prefix": "larkwell",
+  "voice": "af_heart"
+}

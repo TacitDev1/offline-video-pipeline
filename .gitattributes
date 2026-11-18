@@ -1,0 +1,6 @@
+# LF everywhere: mux.sh and the Python scripts run in bash/WSL even when the repo is cloned on Windows
+* text=auto eol=lf
+*.mp4 binary
+*.jpg binary
+*.png binary
+*.ttf binary

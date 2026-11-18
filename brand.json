@@ -1,0 +1,33 @@
+{
+  "_about": "The brand every video uses, read by engine/comp.html. A video.json can override any key with its own \"brand\" block (and the product window with \"app\"). Larkwell is an invented company: replace all of this with your own.",
+  "company": "Larkwell Consulting",
+  "product": "Larkwell Copilot",
+  "wordmark": "larkwell",
+  "url": "larkwell.example",
+  "tagline": "Answers from your own systems.",
+  "subline": "Larkwell Copilot",
+  "colors": {
+    "ink": "#0B1210",
+    "green": "#14532D",
+    "accent": "#A3E635",
+    "accent2": "#86C5A0",
+    "paper": "#F6F7F2"
+  },
+  "mark": {
+    "_about": "Filled SVG paths in a 64 x 64 box, drawn in the accent colour left of the wordmark: a bird's wing of three feathers.",
+    "paths": [
+      "M5 40 C17 38 35 28 57 5 C55 24 43 38 23 44 C15 46 9 45 5 40 Z",
+      "M10 50 C22 50 38 44 53 29 C51 43 39 52 25 55 C18 56 13 54 10 50 Z",
+      "M16 59 C26 60 36 57 45 49 C41 58 33 62 25 63 C21 63 18 62 16 59 Z"
+    ]
+  },
+  "app": {
+    "name": "Larkwell Copilot",
+    "label": "Copilot",
+    "version": "v0.9 · Larkwell Consulting",
+    "status": "Connected to BP1",
+    "placeholder": "Ask anything about your systems...",
+    "intro": "Ask a question in plain language. Every answer shows where it came from.",
+    "tools": ["Error log", "Background jobs", "Interfaces", "Change requests", "Audit log"]
+  }
+}

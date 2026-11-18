@@ -1,0 +1,31 @@
+{
+  "_about": "Input for engine/make-shorts.py: one 20-second short per question. Invented company, systems and data.",
+  "series": "One question, twenty seconds",
+  "endLine": "Ask your system. Get the answer.",
+  "questions": [
+    {
+      "question": "Which background jobs in BP1 ran longer than usual last night?",
+      "chip": "diagnose",
+      "tools": "list_jobs",
+      "lead": "Two jobs ran well over their usual time. Both waited on the same table lock after 01:30.",
+      "table": {
+        "columns": ["Job", "Usual", "Last night", "Waited on"],
+        "rows": [
+          ["Z_STOCK_REVALUE", "12 min", "41 min", "lock on stock table"],
+          ["Z_ROUTE_PLAN_NIGHTLY", "8 min", "29 min", "lock on stock table"]
+        ]
+      }
+    },
+    {
+      "question": "Who can approve purchase orders above the plant limit in plant 2100?",
+      "chip": "explain",
+      "tools": "read_roles",
+      "lead": "Three people hold the approval role for plant 2100, and one of them is on leave until Friday.",
+      "bullets": [
+        "Priya: approval role, active",
+        "Jonas: approval role, active",
+        "Lena: approval role, on leave until Friday"
+      ]
+    }
+  ]
+}

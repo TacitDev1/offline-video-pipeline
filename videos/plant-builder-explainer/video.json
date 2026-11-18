@@ -1,0 +1,46 @@
+{
+  "id": "plant-builder-explainer",
+  "title": "Plant Builder in thirty seconds",
+  "about": "A ~30-second explainer with burned-in captions. Invented product, company and systems (see README).",
+  "captions": true,
+  "voice": { "speed": 0.9 },
+  "scenes": [
+    {
+      "id": "s1",
+      "type": "headline",
+      "h1": "A new plant, **without the spreadsheets**.",
+      "sub": "Plant Builder, by Larkwell Consulting",
+      "subAt": 0.7,
+      "vo": "Setting up a new plant usually means weeks of spreadsheets and email."
+    },
+    {
+      "id": "s2",
+      "type": "chain",
+      "eyebrow": "HOW PLANT BUILDER WORKS",
+      "nodes": [
+        { "icon": "chat", "label": "Describe", "sub": "in plain words" },
+        { "icon": "file", "label": "Draft", "sub": "settings proposed" },
+        { "icon": "shield", "label": "Check", "sub": "against your rules" },
+        { "icon": "user", "label": "Review", "sub": "your team signs off" },
+        { "icon": "transport", "label": "Move", "sub": "into BQ1 to test", "gold": true }
+      ],
+      "vo": "You describe the plant. Plant Builder drafts the settings and checks every value against your rules. Your team reviews the result, and only then does it move to the test system."
+    },
+    {
+      "id": "s3",
+      "type": "fact",
+      "h1": "Nothing moves until **your team signs off**.",
+      "visual": { "kind": "ascii", "piece": "shield", "color": "accent" },
+      "vo": "Nothing moves until your team signs off.",
+      "key": ["Nothing moves until your team signs off."]
+    },
+    {
+      "id": "s4",
+      "type": "end",
+      "h1": "Plant Builder",
+      "sub": "from Larkwell Consulting",
+      "captions": false,
+      "vo": "Plant Builder, from Larkwell Consulting."
+    }
+  ]
+}

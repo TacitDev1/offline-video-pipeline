@@ -1,0 +1,16 @@
+{
+  "name": "offline-video-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JSON spec in, narrated MP4 out, fully offline: Kokoro TTS, a 100 BPM beat grid, headless Chrome frame capture and ffmpeg.",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "check": "node engine/config.mjs",
+    "build": "node engine/revoice.mjs",
+    "sample": "node engine/revoice.mjs videos/copilot-teaser --formats landscape",
+    "queue": "node engine/queue.mjs",
+    "sheet": "node engine/contact-sheet.mjs",
+    "leak-scan": "node scripts/leak-scan.mjs"
+  }
+}

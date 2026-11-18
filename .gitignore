@@ -1,0 +1,27 @@
+# scratch, browser profiles and outputs
+work/
+out/
+takes/
+chrome-profile*/
+chrome-profiles/
+# local tool paths (copy pipeline.config.example.json)
+pipeline.config.json
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+# everything the pipeline generates inside a video folder; only video.json (and any images it names) are source
+videos/*/vo/
+videos/*/vo.wav
+videos/*/music.wav
+videos/*/timing.json
+videos/*/frames-*/
+videos/*/stills/
+videos/*/sheet-*/
+# Kokoro model files are downloaded, never committed
+*.onnx
+voices-*.bin
+node_modules/
+.DS_Store
+Thumbs.db

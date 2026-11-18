@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>Offline video pipeline: how it works</title>
+<meta name="viewport" content="width=1800">
+<style>
+  @font-face { font-family: 'Inter Tight'; font-weight: 300; src: url(../assets/fonts/InterTight-Light.ttf); }
+  @font-face { font-family: 'Inter Tight'; font-weight: 400; src: url(../assets/fonts/InterTight-Regular.ttf); }
+  @font-face { font-family: 'Inter Tight'; font-weight: 500; src: url(../assets/fonts/InterTight-Medium.ttf); }
+  @font-face { font-family: 'JetBrains Mono'; src: url(../assets/fonts/JetBrainsMono-Regular.ttf); }
+  :root { --ink: #0B1210; --paper: #F6F7F2; --muted: #9AA39D; --line: rgba(246,247,242,.18); --accent: #A3E635; }
+  html, body { margin: 0; width: 1800px; height: 1000px; background: var(--ink); color: var(--paper); font-family: 'Inter Tight', sans-serif; overflow: hidden; }
+  body { background: radial-gradient(1200px 700px at 50% 0%, #15201b 0%, var(--ink) 65%); }
+  .wrap { position: absolute; inset: 0; padding: 56px 70px; box-sizing: border-box; }
+  .eyebrow { font-size: 20px; letter-spacing: .18em; color: var(--muted); font-weight: 400; }
+  h1 { font-size: 48px; font-weight: 300; margin: 10px 0 0; letter-spacing: -.01em; }
+  h1 b { font-weight: 500; }
+  .row { display: flex; gap: 28px; align-items: stretch; }
+  .box { background: rgba(246,247,242,.03); border: 1px solid var(--line); border-radius: 14px; padding: 22px 26px; box-sizing: border-box; }
+  .box .t { font-size: 24px; font-weight: 500; margin-bottom: 8px; }
+  .box .d { font-size: 19px; font-weight: 300; color: #c9cfca; line-height: 1.4; }
+  .box .m { font-family: 'JetBrains Mono', monospace; font-size: 16px; color: var(--muted); margin-top: 10px; }
+  .inputs { margin-top: 44px; }
+  .inputs .box { flex: 1; min-height: 168px; }
+  .arrowrow { height: 64px; position: relative; }
+  .arrowrow svg { position: absolute; left: 0; top: 0; }
+  .core { margin: 0 auto; width: 1000px; text-align: center; border-color: rgba(163,230,53,.45); }
+  .core .t { color: var(--accent); }
+  .pipe .box { flex: 1; min-height: 232px; position: relative; }
+  .pipe .n { position: absolute; top: -14px; left: 22px; background: var(--ink); padding: 0 8px; font-family: 'JetBrains Mono', monospace; font-size: 15px; color: var(--accent); letter-spacing: .1em; }
+  .foot { position: absolute; left: 70px; right: 70px; bottom: 44px; display: flex; justify-content: space-between; font-size: 18px; color: var(--muted); font-weight: 300; }
+  .foot b { color: var(--paper); font-weight: 500; }
+  .tag { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; font-size: 15px; color: var(--paper); margin: 0 4px; font-family: 'JetBrains Mono', monospace; }
+</style></head>
+<body><div class="wrap">
+  <div class="eyebrow">OFFLINE VIDEO PIPELINE · HOW IT WORKS</div>
+  <h1>One JSON spec in, a <b>narrated MP4</b> out. Code-based, not generative.</h1>
+
+  <div class="row inputs">
+    <div class="box"><div class="t">Spec</div><div class="d">What the video says and shows: scenes, narration, chat blocks, diagrams, captions.</div><div class="m">videos/&lt;id&gt;/video.json</div></div>
+    <div class="box"><div class="t">Brand</div><div class="d">How it looks: wordmark, colours, the product window's chrome.</div><div class="m">brand.json</div></div>
+    <div class="box"><div class="t">Composition</div><div class="d">One HTML page that draws any moment of any video: scene types, motion, layout for both sizes.</div><div class="m">engine/comp.html</div></div>
+  </div>
+
+  <div class="arrowrow"><svg width="1660" height="64" viewBox="0 0 1660 64" fill="none" stroke="#F6F7F2" stroke-width="2" stroke-opacity=".45">
+    <path d="M270 0 C270 40, 830 20, 830 60"/><path d="M830 0 L830 60"/><path d="M1390 0 C1390 40, 830 20, 830 60"/>
+    <path d="M822 52 L830 62 L838 52" stroke-opacity=".8"/></svg></div>
+
+  <div class="box core"><div class="t">One command per video</div><div class="d"><span class="tag">node engine/revoice.mjs videos/&lt;id&gt;</span> builds it the first time, and after an edit re-does only the scenes that changed. A person or an AI coding agent writes the spec, reads the stills back, fixes layout, re-renders.</div></div>
+
+  <div class="arrowrow"><svg width="1660" height="64" viewBox="0 0 1660 64" fill="none" stroke="#F6F7F2" stroke-width="2" stroke-opacity=".45">
+    <path d="M830 0 L830 28"/><path d="M160 28 L1500 28"/>
+    <path d="M160 28 L160 60"/><path d="M495 28 L495 60"/><path d="M830 28 L830 60"/><path d="M1165 28 L1165 60"/><path d="M1500 28 L1500 60"/></svg></div>
+
+  <div class="row pipe">
+    <div class="box"><span class="n">01 VOICE</span><div class="t">Narration</div><div class="d">Acronyms respelt and phoneme-checked, then one clip per sentence, synthesised locally on CPU.</div><div class="m">Kokoro-82M · kokoro-onnx · espeak phonemiser · ffmpeg resample</div></div>
+    <div class="box"><span class="n">02 TIMING</span><div class="t">Beat grid</div><div class="d">Each clip measured; scenes start on a 100 BPM grid so cuts land on the music, which is synthesised to length.</div><div class="m">clip lengths → scene schedule · synthesised score</div></div>
+    <div class="box"><span class="n">03 RENDER</span><div class="t">Frame by frame</div><div class="d">Every frame is a pure function of time. Headless Chrome seeks and screenshots at 30 fps.</div><div class="m">DevTools Protocol · 1920×1080 + 1080×1080</div></div>
+    <div class="box"><span class="n">04 MUX</span><div class="t">Encode</div><div class="d">Frames + voice + music to MP4, poster baked in as frame zero.</div><div class="m">FFmpeg · libx264 crf 18 · AAC · music −15 dB</div></div>
+    <div class="box"><span class="n">05 QUEUE</span><div class="t">Batch</div><div class="d">Many videos and sizes in parallel. Measured on the original project: 21 videos in 33 minutes on one workstation.</div><div class="m">parallel render + encode jobs</div></div>
+  </div>
+
+  <div class="foot"><span><b>No generative video model.</b> No cloud API. Nothing leaves the machine.</span><span>Node · Python · Chrome · FFmpeg</span></div>
+</div></body></html>
